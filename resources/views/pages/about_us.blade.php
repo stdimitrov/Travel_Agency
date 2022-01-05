@@ -2,5 +2,6 @@
 @section('pageTitle', 'Welcome')
 
 @include('main/navbar')
-<h3>Welcome page</h3>
+<p>About Us page</p>
 @include('main/footer')
+

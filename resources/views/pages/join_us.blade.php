@@ -1,6 +1,6 @@
 @extends('main/head')
-@section('pageTitle', 'Welcome')
+@section('pageTitle', 'Join Us')
 
 @include('main/navbar')
-<h3>Welcome page</h3>
+<p>Join Us page</p>
 @include('main/footer')

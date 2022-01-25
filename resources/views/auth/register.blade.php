@@ -1,4 +1,11 @@
-@extends('layouts.app')
+@extends('main/head')
+@section('csrf-token')
+    @include('layouts/csrf')
+@stop
+@section('pageTitle', 'Login')
+@section('navbar')
+    @include('main/navbar')
+@stop
 
 @section('content')
 <div class="container">

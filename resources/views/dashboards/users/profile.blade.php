@@ -6,6 +6,9 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
+                    <h4>Hi User: {{Auth::user()->name}}</h4>
+                    <hr>
+                    PROFILE
 
                     <div class="card-body">
                         <p>Page 1</p>
@@ -14,7 +17,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h1>Admin page</h1>
 
                         {{ __('You are logged in!') }}
                     </div>

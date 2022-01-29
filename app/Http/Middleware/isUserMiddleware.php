@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class IsAdmin
+class isUserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +17,10 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->is_admin == 1) {
-            return $next($request);
+        if(Auth::check() && Auth::user()->role == 0) {
+            return$next($request);
+        } else {
+            return redirect()->route('login');
         }
-        return redirect('home')->with('error', "You don't have permission ");
-
     }
 }

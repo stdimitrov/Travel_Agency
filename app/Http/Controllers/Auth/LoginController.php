@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 use Illuminate\Http\Request;
 
 
@@ -29,6 +30,14 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+        protected function redirectTo()
+        {
+            if (Auth()->user()->role == 1) {
+                return route('admin.dashboard');
+            } elseif (Auth()->user() == 0) {
+                return route('user.dashboard');
+            }
+        }
 
     /**
      * Create a new controller instance.
@@ -47,15 +56,15 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        if (auth()->attempt(array('email' => $input['email'],
-            'password' => $input['password']))) {
-            if (auth()->user()->is_admin == 1) {
-                return redirect()->route('admin.home');
-            } else {
-                return redirect()->route('home');
+
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+            if (auth()->user()->role == 1) {
+                return redirect()->route('admin.dashboard');
+            } elseif (auth()->user()->role == 0) {
+                return redirect()->route('user.dashboard');
             }
         } else {
-            return redirect()->route('login')->with('error', 'Input proper email or password.');
+            return redirect()->route('login')->with('error', 'Wrong email or password.');
         }
     }
 }

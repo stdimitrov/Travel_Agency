@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* ------------------ Guest Routes ----------------- */
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,13 +38,35 @@ Route::get('/join_us', function () {
 Route::get('/services', function () {
     return view('/pages/services');
 });
-Route::get('/login', function () {
-    return view('auth/Login');
+//Route::get('/login', function () {
+//  return view('auth/Login');
+//});
+
+/* ------------------------------------------------- */
+
+/* -------------- Login -- Register ---------------- */
+
+Route::middleware(['middleware'=>'PreventHistory'])->group(function () {
+    Auth::routes();
 });
 
-// Auth::routes();
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/* -------------------------------------------------- */
+/* ------------------ User Routes ------------------- */
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'PreventHistory']], function () {
+    Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('history', [UserController::class, 'settings'])->name('user.history');
+});
+
+/* ------------------------------------------------- */
+/* ------------------ Admin Routes ----------------- */
+
+Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventHistory']], function () {
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('usersProfile', [AdminController::class, 'settings'])->name('admin.usersProfile');
+});
+
+/* -------------------------------------------------- */
+

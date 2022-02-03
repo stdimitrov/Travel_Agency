@@ -1,24 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\User;
 
 class AdminController extends Controller
 {
-    function index()
+    public function index()
     {
 
         return view('dashboards.admins.index');
     }
 
-    function profile()
+    public function profile()
     {
         return view('dashboards.admins.profile');
     }
 
-    function settings()
+    public function usersProfile()
     {
-        return view('dashboards.admins.usersProfile');
+        return view('dashboards.admins.usersProfile', ['users' =>User::all()]);
     }
+
 }

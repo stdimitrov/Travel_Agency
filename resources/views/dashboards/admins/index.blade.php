@@ -1,32 +1,17 @@
 @extends('layouts.adminApp')
+@section('pageTitle','Dashboard')
 
 @section('content')
+    <h3></h3>
+    <h3>Dashboard</h3>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-                    <h4>Hi Admin: {{Auth::user()->name}}</h4>
-                    <hr>
-                    DASHBOARD
-                    <!-- Sidebar Menu -->
+            <ul>
+                <li>
+                    <h4>{{Auth::user()->name}}'s profile</h4>
+                </li>
+            </ul>
 
-                    <!-- /.sidebar-menu -->
-                </div>
-                <!-- /.sidebar -->
-                </aside>
-                    <div class="card-body">
-                        <p>Page 1</p>
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection

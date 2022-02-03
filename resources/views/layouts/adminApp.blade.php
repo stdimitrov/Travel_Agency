@@ -1,79 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <!--
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Administration area - @yield('pageTitle')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Styles -->
+    <link href="{{ asset('css/adminsPages.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                    <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-compact nav-child-indent nav-collapse-hide-child nav-flat" data-widget="treeview" role="menu" data-accordion="false">
-                            <!-- Add icons to the links using the .nav-icon class
-                                 with font-awesome or any other icon font library -->
-                            <li class="nav-item">
-                                <a href="{{ route('admin.dashboard')}}" class="nav-link {{ (request()->is('admin/dashboard*')) ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-home"></i>
-                                    <p>
-                                        Dashboard
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('admin.profile')}}" class="nav-link {{ (request()->is('admin/profile*')) ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    <p>
-                                        Profile
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('admin.usersProfile')}}" class="nav-link {{ (request()->is('admin/usersProfile*')) ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-cog"></i>
-                                    <p>
-                                        Users
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-                    </nav>
+        <!-- Navbar content -->
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
-                    <!-- Logout Links -->
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
+        <img src="{{asset('logo/CompanyLogo.png')}}" class="rounded d-block" alt="Cinque Terre" width="120"
+             height="80">
+        <ul class="navbar-nav ms-auto">
+            <li>
+                <img src="{{asset(Auth::user()->avatar)}}" alt="" style="width:40px; height:40px; float:left; border:1px solid black; border-radius:50%; margin-right:5px;">
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.profile')}}" class="nav-link">
+                    {{ Auth::user()->name }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
+                    {{ __('Logout') }}
+                </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </ul>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="wrapper" class="active">
+        <!-- Sidebar -->
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav" id="sidebar">
+                <li>
+                    <a href="{{ route('admin.dashboard')}}"
+                       class="nav-link {{ (request()->is('admin/dashboard*')) ? 'active' : '' }}">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.profile')}}"
+                       class="nav-link {{ (request()->is('admin/profile*')) ? 'active' : '' }}">
+                        profile
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.usersProfile')}}"
+                       class="nav-link {{ (request()->is('admin/usersProfile*')) ? 'active' : '' }}">
+                        users
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="nav-link {{ (request()->is('admin/usersProfile*')) ? 'active' : '' }}">
+                        Empty
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="nav-link {{ (request()->is('admin/usersProfile*')) ? 'active' : '' }}">
+                        Empty
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="nav-link {{ (request()->is('admin/usersProfile*')) ? 'active' : '' }}">
+                        Empty
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+                <div class="row">
+                    <div class="col-md-12">
+                        @yield('content')
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-    <main class="py-4">
-        @yield('content')
-    </main>
+
+    </div>
+
 </div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--  https://code.jquery.com/jquery-3.2.1.slim.min.js -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,9 +39,7 @@ Route::get('/join_us', function () {
 Route::get('/services', function () {
     return view('/pages/services');
 });
-//Route::get('/login', function () {
-//  return view('auth/Login');
-//});
+
 
 /* ------------------------------------------------- */
 
@@ -65,7 +64,15 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'PreventHis
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventHistory']], function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
-    Route::get('usersProfile', [AdminController::class, 'settings'])->name('admin.usersProfile');
+    Route::get('usersProfile', [AdminController::class, 'usersProfile'])->name('admin.usersProfile');
+
+
+    Route::get('usersProfileEdit', [AdminUsersController::class, 'usersProfileEdit'])->name('admin.usersCrud.usersProfileEdit');
+    Route::get('usersProfileCreate', [AdminUsersController::class, 'usersProfileCreate'])->name('admin.usersCrud.usersProfileCreate');
+
+    Route::POST('usersProfileCreate', [AdminUsersController::class, 'usersProfileStore'])->name('admin.usersCrud.usersProfileStore');
+    Route::POST('usersProfileDelete', [AdminUsersController::class, 'usersProfileDelete'])->name('admin.usersCrud.usersProfileDelete');
+
 });
 
 /* -------------------------------------------------- */

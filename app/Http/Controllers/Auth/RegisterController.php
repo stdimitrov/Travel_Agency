@@ -93,6 +93,7 @@ class RegisterController extends Controller
         $user->role = 0;
         $user->password = \Hash::make($request->password);
 
+
         if( $user->save() ){
             return redirect('login');
         }else{

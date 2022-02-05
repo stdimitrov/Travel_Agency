@@ -20,7 +20,7 @@ class AdminController extends Controller
 
     public function usersProfile()
     {
-        return view('dashboards.admins.usersProfile', ['users' =>User::all()]);
+        return view('dashboards.admins.usersProfile', ['users' => User::all()]);
     }
 
 }

@@ -7,12 +7,11 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
                         <h2 class="float-left">Users</h2>
-                        <a class="btn btn-sm float-right"
-                           href="{{ route('admin.usersCrud.usersProfileCreate') }}">
+                        <a href="{{ route('admin.usersCrud.usersProfileCreate') }} "class="btn btn-sm float-right">
                             Create some new asshole
                         </a>
                     </div>
@@ -28,6 +27,7 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Actions</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -51,18 +51,18 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-sm "
-                                                onclick="event.preventDefault();
-                                                    document.getElementById('delete-user {{ $user->id }}').submit();">
-                                            Delete the Asshole
-                                        </button>
                                         <form id="delete-user {{ $user->id }}"
-                                              action="{{ route('admin.usersCrud.usersProfileDelete', $user->id) }}"
+                                              action="{{ route('admin.usersCrud.usersProfileDestroy', $user->id) }}"
                                               method="POST"
                                               style="display:none " class="btn btn-sm">
                                             @csrf
                                             @method("DELETE")
                                         </form>
+                                        <button type="button" class="btn btn-sm "
+                                                onclick="event.preventDefault();
+                                                    document.getElementById('delete-user {{ $user->id }}').submit();">
+                                            Delete the Asshole
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach

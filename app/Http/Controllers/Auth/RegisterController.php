@@ -81,9 +81,17 @@ class RegisterController extends Controller
     function register(Request $request){
 
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:20'],
+            'middle_name' => ['sometimes||max:20'],
+            'last_name' => ['sometimes||max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'role' => ['required' => false],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar' => ['sometimes'],
+            'phone_country' => ['sometimes||regex:/^([0-9\s\-\+\(\)]*)$/|min:7'],
+            'phone_number' => ['sometimes||regex:/^([0-9\s\-\+\(\)]*)$/|min:8, max:20'],
+            'birthdate' => ['sometimes'],
+            'gender' => ['sometimes']
         ]);
 
 

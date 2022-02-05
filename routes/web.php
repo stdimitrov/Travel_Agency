@@ -65,13 +65,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventH
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('usersProfile', [AdminController::class, 'usersProfile'])->name('admin.usersProfile');
-
-
-    Route::get('usersProfileEdit', [AdminUsersController::class, 'usersProfileEdit'])->name('admin.usersCrud.usersProfileEdit');
+    Route::get('usersProfileEdit/{id}', [AdminUsersController::class, 'usersProfileEdit'])->name('admin.usersCrud.usersProfileEdit');
     Route::get('usersProfileCreate', [AdminUsersController::class, 'usersProfileCreate'])->name('admin.usersCrud.usersProfileCreate');
 
-    Route::POST('usersProfileCreate', [AdminUsersController::class, 'usersProfileStore'])->name('admin.usersCrud.usersProfileStore');
-    Route::POST('usersProfileDelete', [AdminUsersController::class, 'usersProfileDelete'])->name('admin.usersCrud.usersProfileDelete');
+    Route::post('usersProfileStore', [AdminUsersController::class, 'usersProfileStore'])->name('admin.usersCrud.usersProfileStore');
+    Route::post('usersProfileUpdate/{id}', [AdminUsersController::class, 'usersProfileUpdate'])->name('admin.usersCrud.usersProfileUpdate');
+    //Route::POST('usersProfileCreate', [AdminUsersController::class, 'usersProfileStore'])->name('admin.usersCrud.usersProfileStore');
+    Route::DELETE('usersProfileDestroy/{id}', [AdminUsersController::class, 'usersProfileDestroy'])->name('admin.usersCrud.usersProfileDestroy');
 
 });
 

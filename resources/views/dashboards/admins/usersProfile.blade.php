@@ -51,6 +51,12 @@
                                         </a>
                                     </td>
                                     <td>
+
+                                        <button type="button" class="btn btn-sm "
+                                                onclick="event.preventDefault();
+                                                    document.getElementById('delete-user {{ $user->id }}').submit();">
+                                            Delete the Asshole
+                                        </button>
                                         <form id="delete-user {{ $user->id }}"
                                               action="{{ route('admin.usersCrud.usersProfileDestroy', $user->id) }}"
                                               method="POST"
@@ -58,11 +64,7 @@
                                             @csrf
                                             @method("DELETE")
                                         </form>
-                                        <button type="button" class="btn btn-sm "
-                                                onclick="event.preventDefault();
-                                                    document.getElementById('delete-user {{ $user->id }}').submit();">
-                                            Delete the Asshole
-                                        </button>
+
                                     </td>
                                 </tr>
                             @endforeach

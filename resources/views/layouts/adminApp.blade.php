@@ -41,9 +41,9 @@
         .register-form .form-control {
             border: none;
             background: none;
-            border-bottom: 1px solid #ffc107;
+            border-bottom: 1px solid #82cbe8;
             border-radius: 0px !important;
-            color: #fff;
+            color: #25cff2;
         }
         .register-form .form-control:focus,
         .register-form .form-control:hover{
@@ -52,7 +52,7 @@
             background: none;
             box-shadow: none;
             border-bottom: 1px solid #fff;
-            color: #fff;
+            color: #8fddec;
         }
     </style>
 
@@ -112,9 +112,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ route('admin.tripsProfile')}}"
                        class="nav-link {{ (request()->is('admin/usersProfile*')) ? 'active' : '' }}">
-                        Empty
+                        Trips
                     </a>
                 </li>
                 <li>
@@ -150,6 +150,8 @@
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <!--  https://code.jquery.com/jquery-3.2.1.slim.min.js -->
+
+<!--            first parts                           -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -159,5 +161,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<!--          second parts                          -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

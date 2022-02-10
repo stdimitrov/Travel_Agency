@@ -1,41 +1,5 @@
 @csrf
 
-<div class="register-form mt-3 mb-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 d-none d-md-block bg-warning">
-                <h1 class="text-center pt-3">Create Account<br> Now</h1>
-            </div>
-            <div class="col-md-6 bg-dark">
-                <form action="#" class="p-4 text-white">
-                    <div class="form-group">
-                        <label for="name"><i class="fas fa-user"></i> Name</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                        <input type="email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd"><i class="fas fa-lock"></i> Confirm Password</label>
-                        <input type="password" class="form-control" id="pwd">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd"><i class="fas fa-lock"></i> Confirm Password</label>
-                        <input type="password" class="form-control" id="pwd">
-                    </div>
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox"> Remember me
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-warning mb-3 mt-3 float-right">Register</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <br />
 <div class="row md-3">
@@ -46,7 +10,7 @@
         @if(isset($user->id))
         {{ $user->name }}
         @endif" required autocomplete="name" autofocus>
-        @error('name')
+        @error('name')>
         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

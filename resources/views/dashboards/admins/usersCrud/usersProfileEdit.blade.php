@@ -6,7 +6,7 @@
         <div class="container">
         <form method="POST" action="{{ route('admin.usersCrud.usersProfileUpdate', $user->id) }}" enctype="multipart/form-data">
             @method('POST')
-            @include('dashboards/admins/parts/form')
+            @include('dashboards.admins.parts.formUsers')
         </form>
         </div>
     </div>

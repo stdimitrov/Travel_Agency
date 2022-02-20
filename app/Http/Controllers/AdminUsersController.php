@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\AdminController;
 use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class AdminUsersController extends AdminController  //Controller
+class AdminUsersController extends AdminController
 {
 
 
@@ -24,8 +24,8 @@ class AdminUsersController extends AdminController  //Controller
     public function usersProfileStore(Request $request)
     {
         $user = User::create($request->except(['_token']));
-        return redirect(route('admin.usersProfile'));
 
+        return redirect(route('admin.usersProfile'));
     }
 
     public function usersProfileUpdate(Request $request, $id)
@@ -40,6 +40,7 @@ class AdminUsersController extends AdminController  //Controller
     public function usersProfileDestroy($id)
     {
         User::destroy($id);
+
         return redirect(route('admin.usersProfile'));
 
     }
@@ -49,7 +50,7 @@ class AdminUsersController extends AdminController  //Controller
 
 
 /* **************************************************************************************
-*************************************  Maket Helper *************************************
+************************************** Helper *******************************************
 
 $request->validate([
 

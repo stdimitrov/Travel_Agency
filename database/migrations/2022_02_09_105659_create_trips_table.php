@@ -14,9 +14,8 @@ class CreateTripsTable extends Migration
 
     public function up()
     {
-        Schema::create('tripsCrud', function (Blueprint $table) {
+        Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
-            //$table->unsignedInteger('sub_id');  // temporary
             $table->string('name');
             $table->string('title');
             $table->string('second_title');
@@ -28,14 +27,11 @@ class CreateTripsTable extends Migration
             $table->text('included');
             $table->text('not_included');
             $table->boolean('discount')->default(0);
-            $table->date('created_at');
-            $table->date('updated_at');
-            /* $table->foreign('sub_id')
-                ->references('id')
-                ->on('images')
-                //->onUpdate('cascade')
-                ->onDelete('cascade');  */
+            $table->timestamps();
+            //$table->date('created_at');
+            //$table->date('updated_at');
         });
+
     }
 
     /**
@@ -43,8 +39,9 @@ class CreateTripsTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
-        Schema::dropIfExists('tripsCrud');
+        Schema::dropIfExists('trips');
     }
 }

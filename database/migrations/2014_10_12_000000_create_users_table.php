@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_number')->default('');
             $table->date('birthdate');
             $table->tinyInteger('gender');
-            $table->rememberToken();
+            //$table->rememberToken();
             $table->timestamps();
         });
     }

@@ -1,7 +1,5 @@
 @extends('main/head')
-@section('csrf-token')
-    @include('layouts/csrf')
-@stop
+@csrf
 @section('pageTitle', 'Login')
 @section('navbar')
     @include('main/navbar')

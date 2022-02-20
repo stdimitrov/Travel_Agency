@@ -1,16 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Trips;
-use Illuminate\Http\Request;
+
 use Auth;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\Trips;
+use Illuminate\Support\Facades\DB;
+
 
 class AdminController extends Controller
 {
     public function index()
     {
-
         return view('dashboards.admins.index');
     }
 
@@ -25,7 +27,9 @@ class AdminController extends Controller
     }
 
     public function tripsProfile()
+
     {
         return view('dashboards.admins.tripsProfile', ['trips' => Trips::all()]);
     }
+
 }

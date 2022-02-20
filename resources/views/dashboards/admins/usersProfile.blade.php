@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h2 class="float-left">Users</h2>
-                        <a href="{{ route('admin.usersCrud.usersProfileCreate') }} "class="btn btn-sm float-right">
+                        <a href="{{ route('admin.usersCrud.usersProfileCreate') }} " class="btn btn-sm float-right">
                             Create some new asshole
                         </a>
                     </div>
@@ -66,14 +66,23 @@
                                         </form>
 
                                     </td>
+
                                 </tr>
+
                             @endforeach
                             </tbody>
+
                         </table>
                     </div>
+
+
                 </div>
+
+
             </div>
+
         </div>
+
     </div>
 
 @endsection

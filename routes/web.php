@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-/* ------ Guest Routes Get - method ------ */
+/* --------------------------------------------------------------------------------------- */
+/* ----------------------- Guest Routes Get - method ------------------------------------- */
 Route::get('/', function () {
     return view('welcome');
 });
@@ -41,55 +42,77 @@ Route::get('/services', function () {
 });
 
 
-/* ------------------------------------------------- */
-
-/* -------------- Login -- Register ---------------- */
+  /* --------------------------------------------------------------------------------------- */
+  /* ----------------------- Login --- Register -------------------------------------------- */
 
 Route::middleware(['middleware'=>'PreventHistory'])->group(function () {
     Auth::routes();
 });
 
-/* -------------------------------------------------- */
-/* ------------------ User Routes ------------------- */
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- User Routes --------------------------------------------------- */
 Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'PreventHistory']], function () {
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('history', [UserController::class, 'settings'])->name('user.history');
 });
 
-/* ------------------------------------------------- */
-/* ------------------ Admin Routes ----------------- */
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- Admin Routes -------------------------------------------------- */
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventHistory']], function () {
 
+    /* --------------------------------------------------------------------------------------- */
     /* ----------------------- All Index Profile Pages  Get - method ------------------------- */
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('usersProfile', [AdminController::class, 'usersProfile'])->name('admin.usersProfile');
     Route::get('tripsProfile', [AdminController::class, 'tripsProfile'])->name('admin.tripsProfile');
 
-    /* ----------------------- Users CRUD Get - method ------------------------------------------------------------------------------------- */
+
+
+    /* --------------------------------------------------------------------------------------- */
+    /* --------------------------------- Delete ---------------------------------------------- */
+    /* --------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------- */
+    /* --------------------------------- Delete ---------------------------------------------- */
+    /* --------------------------------------------------------------------------------------- */
+
+
+
+
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- Admin CRUD Get - method --------------------------------------- */
+
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- Users CRUD Get - method --------------------------------------- */
     Route::get('usersProfileEdit/{id}', [AdminUsersController::class, 'usersProfileEdit'])->name('admin.usersCrud.usersProfileEdit');
     Route::get('usersProfileCreate', [AdminUsersController::class, 'usersProfileCreate'])->name('admin.usersCrud.usersProfileCreate');
 
-    /* ----------------------- Trips CRUD Get - method ------------------------------------------------------------------------------------- */
-    Route::get('tripsEdit/{id}', [TripsController::class, 'tripsEdit'])->name('admin.tripsCrud.tripsEdit');
-    Route::get('tripsCreate', [TripsController::class, 'tripsCreate'])->name('admin.tripsCrud.tripsCreate');
-
-    /* ----------------------- Users CRUD Post - method ------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- Users CRUD Post - method -------------------------------------- */
     Route::post('usersProfileStore', [AdminUsersController::class, 'usersProfileStore'])->name('admin.usersCrud.usersProfileStore');
     Route::post('usersProfileUpdate/{id}', [AdminUsersController::class, 'usersProfileUpdate'])->name('admin.usersCrud.usersProfileUpdate');
 
-    /* ----------------------- Users CRUD Delete - method ------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- Users CRUD Delete - method ------------------------------------ */
     Route::DELETE('usersProfileDestroy/{id}', [AdminUsersController::class, 'usersProfileDestroy'])->name('admin.usersCrud.usersProfileDestroy');
 
-    /* ----------------------- Trips CRUD Post - method ------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- Trips CRUD Get - method --------------------------------------- */
+    Route::get('tripsShow', [TripsController::class, 'tripsShow'])->name('admin.tripsCrud.tripsShow');
+    Route::get('tripsEdit/{id}', [TripsController::class, 'tripsEdit'])->name('admin.tripsCrud.tripsEdit');
+    Route::get('tripsCreate', [TripsController::class, 'tripsCreate'])->name('admin.tripsCrud.tripsCreate');
+    //
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- Trips CRUD Post - method -------------------------------------- */
     Route::post('tripsStore', [TripsController::class, 'tripsStore'])->name('admin.tripsCrud.tripsStore');
     Route::post('tripsUpdate/{id}', [TripsController::class, 'tripsUpdate'])->name('admin.tripsCrud.tripsUpdate');
 
-    /* ----------------------- Trips CRUD Delete - method ------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------- */
+    /* ----------------------- Trips CRUD Delete - method ------------------------------------ */
     Route::DELETE('tripsDestroy/{id}', [TripsController::class, 'tripsDestroy'])->name('admin.tripsCrud.tripsDestroy');
 
 });
 
-/* -------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------- */
 

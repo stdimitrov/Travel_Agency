@@ -2,7 +2,7 @@
 
 <br />
 
-<div class="row md-3">
+<div class="row">
     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
     <div class="col-md-6">
         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -18,7 +18,7 @@
     </div>
 </div>
 <br />
-<div class="row md-3">
+<div class="row">
     <label for="title" class="col-md-4 col-form-label text-md-end">{{ __('Title') }}</label>
     <div class="col-md-6">
         <input id="title" type="title" class="form-control @error('title') is-invalid
@@ -36,7 +36,7 @@
 
 <br />
 
-<div class="row md-3">
+<div class="row">
     <label for="second_title" class="col-md-4 col-form-label text-md-end">{{ __('Second title') }}</label>
     <div class="col-md-6">
         <input id="second_title" type="second_title" class="form-control @error('second_title') is-invalid
@@ -54,7 +54,7 @@
 
 <br />
 
-<div class="row mb-3">
+<div class="row">
     <label for="overview" class="col-md-4 col-form-label text-md-end">{{ __('Overview') }}</label>
     <div class="col-md-6">
         <input id="overview" type="overview" class="form-control @error('overview') is-invalid

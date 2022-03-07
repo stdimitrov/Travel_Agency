@@ -1,1 +1,65 @@
-/* No CSS *//*# sourceMappingURL=adminsPages.css.map */
+@media (min-width: 1280px) and (max-width: 1920px) {
+  body {
+    background-color: #a6a6a6; }
+    body #app .navbar {
+      background-color: #606265;
+      width: 100%; }
+      body #app .navbar .rounded {
+        width: 130px;
+        height: 80px;
+        margin-left: 10px;
+        margin-top: 5px; }
+      body #app .navbar ul {
+        margin-right: 20px; }
+        body #app .navbar ul li {
+          margin: 10px;
+          padding: 5px; }
+          body #app .navbar ul li img {
+            width: 60px;
+            height: 60px;
+            float: left;
+            border: 1px solid #606265;
+            border-radius: 50%;
+            margin-right: 10px; }
+          body #app .navbar ul li .link {
+            float: bottom;
+            text-decoration: none;
+            color: #1c1f23;
+            font-family: "DejaVu Serif";
+            margin-top: 20px;
+            font-style: italic;
+            transition: 0.5s; }
+            body #app .navbar ul li .link p {
+              margin-top: 20px;
+              font-size: 21px; }
+          body #app .navbar ul li .link:hover {
+            color: #31333a;
+            text-shadow: 2px 2px 4px #ffffff; }
+    body #app #row #col {
+      width: 220px;
+      float: left;
+      background-color: #a6a6a6; }
+      body #app #row #col #sidebar-ul {
+        margin-top: 25px;
+        margin-left: 20px; }
+        body #app #row #col #sidebar-ul li {
+          margin: 20px;
+          padding: 10px; }
+          body #app #row #col #sidebar-ul li a {
+            float: bottom;
+            text-decoration: none;
+            color: #1c1f23;
+            font-family: "DejaVu Sans", Serif;
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 18px;
+            transition: 0.5s; }
+          body #app #row #col #sidebar-ul li a:hover {
+            color: #606265;
+            text-shadow: 2px 2px 4px #ffffff; } }
+@media (min-width: 1920px) and (max-width: 5000px) {
+  /* -----------------------------------------------
+  Sorry :/ My monitor doesn't support this resolution
+  ----------------------------------------------- */ }
+
+/*# sourceMappingURL=adminsPages.css.map */

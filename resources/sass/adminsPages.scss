@@ -1,0 +1,123 @@
+@import 'variables';
+
+// 800 1024 1280 1360 1366  1920
+$min-width-xs: 600px;
+$min-width-md: 960px;
+$min-width-lg: 1280px;
+$min-width-xl: 1920px;
+
+$max-width-xs: 599px;
+$max-width-sm: 959px;
+$max-width-md: 1279px;
+$max-width-lg: 1920px;
+$max-width-xl: 5000px;
+$grey: #606265;
+$light-grey: #a6a6a6;
+
+
+@media (min-width: $min-width-xs) and (max-width: $max-width-sm) {
+
+}
+
+@media (min-width: $min-width-md) and (max-width: $max-width-md) {
+
+}
+
+@media (min-width: $min-width-lg) and (max-width: $max-width-lg) {
+    body {
+        background-color: $light-grey;
+        #app {
+            // Logo
+            .navbar {
+                background-color: $grey;
+                width: 100%;
+                .rounded {
+                    width: 130px;
+                    height: 80px;
+                    margin-left: 10px;
+                    margin-top: 5px;
+                }
+                ul {
+                    margin-right: 20px;
+                    li {
+                        margin: 10px;
+                        padding: 5px;
+                        img {
+                            width: 60px;
+                            height: 60px;
+                            float: left;
+                            border: 1px solid $grey;
+                            border-radius: 50%;
+                            margin-right: 10px;
+                        }
+                        .link {
+                            float: bottom;
+                            text-decoration: none;
+                            color: #1c1f23;
+                            font-family: "DejaVu Serif";
+                            margin-top: 20px;
+                            font-style: italic;
+                            transition: 0.5s;
+                            p {
+                                margin-top: 20px;
+                                font-size: 21px;
+                            }
+                        }
+                        .link:hover {
+                                color: #31333a;
+                                text-shadow: 2px 2px 4px #ffffff;
+                        }
+                        .d-none {
+                        }
+                    }
+                }
+            }
+            // Menu
+            #row {
+                #col {
+                    width: 220px;
+                    float: left;
+                    background-color: $light-grey;
+                    #sidebar-ul {
+                        margin-top: 25px;
+                        margin-left: 20px;
+                        li {
+                            margin: 20px;
+                            padding: 10px;
+                            a {
+                                float: bottom;
+                                text-decoration: none;
+                                color: #1c1f23;
+                                font-family: "DejaVu Sans", Serif;
+                                margin-top: 20px;
+                                font-style: italic;
+                                font-size: 18px;
+                                transition: 0.5s;
+                            }
+                            a:hover {
+                                color: $grey;
+                                text-shadow: 2px 2px 4px #ffffff;
+                            }
+                        }
+                    }
+                }
+                #col-md {
+                    .page-yield {
+                        .row-yield {
+                            // Yield
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $min-width-xl) and (max-width: $max-width-xl) {
+    /* -----------------------------------------------
+    Sorry :/ My monitor doesn't support this resolution
+    ----------------------------------------------- */
+}
+
+
+

@@ -13,27 +13,17 @@
 
 ## Deploying 
 
-'''bash
 -  git clone https://github.com/stdimitrov/Travel_Agency.git
 -  composer install
-'''
-
 -  Create .env file or copy the .env.example and rename it
-
-'''bash
 -  php artisan key:generate
 -  php artisan config:cache
 -  composer dump-autoload
-'''
-
 -  create DB table 
 -  Configurate the .env 
-
-'''bash
-php artisan migrate
-php artisan db:seed
-php artisan serve
-'''
+-  php artisan migrate
+-  php artisan db:seed
+-  php artisan serve
 
 
 ## Еxpected errors
